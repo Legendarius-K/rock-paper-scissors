@@ -5,36 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="./index-rps.css">
+    <link rel="stylesheet" href="./typography/typography.css">
     <link rel="icon" type="image/x-icon" href="">
     <script src="./jquery-3.7.1.min.js"></script>
     <script src="./index-rps.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>- Rock - Paper - Scissors -</h1>
+        <nav>
+            <button class="nav-btn new-game">New Game</button>
+            <button class="nav-btn next-round">Next Round</button>
+        </nav>
     </header>
+    
     <section class="main-content">
         <div class="grid-box user">
-            <button class="user-rock" >
-                <!-- <img src="./images/rock.svg" alt="Rock" height="100px" width="100px"> -->
-            </button>    
-            <button class="user-paper" >
-                <!-- <img src="./images/paper.svg" alt="Paper" height="100px" width="100px"> -->
-            </button>    
-            <button class="user-scissors" >  
-                <!-- <img src="./images/scissors.svg" alt="Scissors" height="100px" width="100px"> -->
-            </button> 
+
+            <button class="user-rock" ></button> 
+
+            <button class="user-paper" ></button>    
+
+            <button class="user-scissors" ></button> 
+
         </div>
         <div class="grid-box mid">
             <p class="player-message">Choose your weapon</p>
-            <img src="./images/vs.jpg" alt="Versus">
-            <p>Score</p>
+            <img class="vs-pic" src="./images/vs2.jpg" alt="Versus">
+            <img class="tie-pic" src="./images/tie.jpeg" alt="tie">
             <p class="scoreboard"></p>
         </div>
         <div class="grid-box comp">
-                <img class="comp-rock" src="./images/rock.svg" alt="Rock" height="100px" width="100px">
-                <img class="comp-paper" src="./images/paper.svg" alt="Paper" height="100px" width="100px">
-                <img class="comp-scissors" src="./images/scissors.svg" alt="Scissors" height="100px" width="100px">
+            <button class="comp-rock"></button>
+            <button class="comp-paper"></button>
+            <button class="comp-scissors"></button>
+            <!-- <img class="comp-rock" src="./images/rock.svg" alt="Rock" height="100px" width="100px">
+            <img class="comp-paper" src="./images/paper.svg" alt="Paper" height="100px" width="100px">
+            <img class="comp-scissors" src="./images/scissors.svg" alt="Scissors" height="100px" width="100px"> -->
         </div>
     </section>
 </body>
