@@ -49,19 +49,17 @@ nav {
 .sound-on {
     height: 3.4vw;
     width: auto;
-    display: none;
+    margin: 1%;
+    aspect-ratio: 1/1;
 }
 
 .sound-off {
     height: 3.4vw;
     width: auto;
     display: none;
-}
-
-.audio-active {
-    display: unset;
-    transition: 200ms;
     margin: 1%;
+    aspect-ratio: 1/1;
+
 }
 
 .main-content {
@@ -153,18 +151,16 @@ nav {
     display: none;
 }
 
-/* .grid-box.user button.winner,
-.grid-box.comp img.winner {
-    height: 55%;
-    aspect-ratio: 1/1;
-} */
-
-
 
 @media screen and (max-width: 1024px) {
     .nav-btn:hover {
         background-color: blueviolet;
         color: darkorange;
+    }
+
+    .sound-on,
+    .sound-off {
+        height: 5vw;
     }
 
     .main-content {

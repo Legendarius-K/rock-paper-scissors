@@ -207,14 +207,14 @@ $(".new-game").on("click", () => {
 
 $(".sound-on").on("click", e => {
     sound = false;
-    $(e.target).toggleClass("audio-active");
-    $(e.target).siblings().toggleClass("audio-active");
+    $(e.target).toggle();
+    $(e.target).siblings().toggle();
 });
 
 $(".sound-off").on("click", e => {
     sound = true;
-    $(e.target).toggleClass("audio-active");
-    $(e.target).siblings().toggleClass("audio-active");
+    $(e.target).toggle();
+    $(e.target).siblings().toggle();
 });
 
 })
