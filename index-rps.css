@@ -22,6 +22,12 @@ header {
     background-color: rgb(24, 173, 7);
 }
 
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav-btn {
     font-family: "Eastsea";
     font-size: 2.6vw;
@@ -38,6 +44,24 @@ header {
 .nav-btn:hover {
     background-color: darkorange;
     color: blueviolet;
+}
+
+.sound-on {
+    height: 3.4vw;
+    width: auto;
+    display: none;
+}
+
+.sound-off {
+    height: 3.4vw;
+    width: auto;
+    display: none;
+}
+
+.audio-active {
+    display: unset;
+    transition: 200ms;
+    margin: 1%;
 }
 
 .main-content {
@@ -97,7 +121,7 @@ header {
         align-items: center;
         justify-content: center; 
         font-size: 3vw;
-        color:blueviolet;
+        color:rgb(226, 147, 43);
         -webkit-text-stroke: 2px black;
 }
 

@@ -11,6 +11,7 @@
 */
 
 $(() => {
+let sound = true;
 const clickSound = new Audio("./audio/click.mp3");
 clickSound.preload = "auto";
 const newGameSound = new Audio("./audio/newgame.mp3");
@@ -92,7 +93,9 @@ const checkWinner = () => {
             }
             setTimeout(() => {
                 $(".player-message").text("HUMAN WINS!");
-                humanWinSound.play();
+                if (sound) {
+                    humanWinSound.play();
+                }
             }, 2000);
         });
     } else if (userWinner === false) {        
@@ -103,16 +106,20 @@ const checkWinner = () => {
             }
             setTimeout(() => {
                 $(".player-message").text("COMPUTER WINS!");
-                compWinSound.play();
+                if (sound) {
+                    compWinSound.play();
+                }    
             }, 2000);
         })
     } else {
         setTimeout(() => {
-            tieSound.play();
+            if (sound) {
+                tieSound.play();
+            }    
             $(".player-message").text("TIE GAME!");
             $(".vs-pic").toggle();
             $(".tie-pic").toggle();
-        }, 2000);
+        }, 1000);
     }
 
 }
@@ -152,13 +159,15 @@ const nextRound = () => {
 
 
 $(".grid-box.user button").on("click", e => {
-    clickSound.play();
+    if (sound) {
+        clickSound.play();
+    }    
     $(e.target).toggleClass("active");
     $(e.target).siblings().fadeTo("slow", 0.25);
     userChoice = e.target.className;
     userTurn = false;
     console.log(userChoice);
-    $(".player-message").text("Computer's turn —>");
+    $(".player-message").text("Computer's turn");
     e.target.disabled = true;
     $(e.target).siblings().addBack().prop('disabled', true);
 
@@ -181,16 +190,31 @@ $(".grid-box.user button").on("click", e => {
 })
 
 $(".next-round").on("click", () => {
-    nextRoundSound.play();
+    if (sound) {
+        nextRoundSound.play();
+    }    
     nextRound();
 })    
 $(".new-game").on("click", () => {
-    newGameSound.play();
+    if (sound) {
+        newGameSound.play();
+    }    
     nextRound();
     userScore = 0;
     compScore = 0;
     $(".scoreboard").text(`${userScore} - ${compScore}`);
 });
 
+$(".sound-on").on("click", e => {
+    sound = false;
+    $(e.target).toggleClass("audio-active");
+    $(e.target).siblings().toggleClass("audio-active");
+});
+
+$(".sound-off").on("click", e => {
+    sound = true;
+    $(e.target).toggleClass("audio-active");
+    $(e.target).siblings().toggleClass("audio-active");
+});
 
 })
