@@ -11,7 +11,18 @@
 */
 
 $(() => {
-
+const clickSound = new Audio("./audio/click.mp3");
+clickSound.preload = "auto";
+const newGameSound = new Audio("./audio/newgame.mp3");
+newGameSound.preload = "auto";
+const nextRoundSound = new Audio("./audio/nextround.mp3");
+nextRoundSound.preload = "auto";
+const tieSound = new Audio("./audio/tie.mp3");
+tieSound.preload = "auto";
+const humanWinSound = new Audio("./audio/humanwin.mp3");
+humanWinSound.preload = "auto";
+const compWinSound = new Audio("./audio/compwin.mp3");
+compWinSound.preload = "auto";
 
 let weapons = ["comp-rock", "comp-paper", "comp-scissors"];
 let userTurn = true;
@@ -43,10 +54,10 @@ $(".scoreboard").text(`${userScore} - ${compScore}`);
 const checkWinner = () => {
     if (userChoice === "user-rock active") {
         if (compChoice === "comp-paper") {
-            compWinMessage();
+            // compWinMessage();
             userWinner = false;
         } else if (compChoice === "comp-scissors") {
-            userWinMessage();
+            // userWinMessage();
             userWinner = true;
         } else {
             tieMessage();
@@ -55,46 +66,49 @@ const checkWinner = () => {
         if (compChoice === "comp-paper") {
             tieMessage();
         } else if (compChoice === "comp-scissors") {
-            compWinMessage();
+            // compWinMessage();
             userWinner = false;
         } else {
-            userWinMessage();
+            // userWinMessage();
             userWinner = true;
         }
     } else {
         if (compChoice === "comp-paper") {
-            userWinMessage();
+            // userWinMessage();
             userWinner = true;
         } else if (compChoice === "comp-scissors") {
             tieMessage();
         } else {
-            compWinMessage();
+            // compWinMessage();
             userWinner = false;
         }
     }
 
     if (userWinner) {
+        userWinMessage();
         $(".user button").each((index, e) => {
             if ($(e).attr('class') === userChoice) {
-                $(e).delay(2000).animate({width: "55%"}, 500);
-                // $(e).delay(2000).toggleClass("winner");
+                $(e).delay(2000).animate({width: "55%"}, 500);               
             }
             setTimeout(() => {
                 $(".player-message").text("HUMAN WINS!");
+                humanWinSound.play();
             }, 2000);
         });
-    } else if (userWinner === false) {
+    } else if (userWinner === false) {        
+        compWinMessage();
         $(".comp button").each((index, e) => {
             if ($(e).attr('class') === compChoice) {
                 $(e).delay(2000).animate({width: "55%"}, 500);
-                // $(e).delay(2000).toggleClass("winner");
             }
             setTimeout(() => {
                 $(".player-message").text("COMPUTER WINS!");
+                compWinSound.play();
             }, 2000);
         })
     } else {
         setTimeout(() => {
+            tieSound.play();
             $(".player-message").text("TIE GAME!");
             $(".vs-pic").toggle();
             $(".tie-pic").toggle();
@@ -138,6 +152,7 @@ const nextRound = () => {
 
 
 $(".grid-box.user button").on("click", e => {
+    clickSound.play();
     $(e.target).toggleClass("active");
     $(e.target).siblings().fadeTo("slow", 0.25);
     userChoice = e.target.className;
@@ -165,8 +180,12 @@ $(".grid-box.user button").on("click", e => {
     
 })
 
-$(".next-round").on("click", () => nextRound());
+$(".next-round").on("click", () => {
+    nextRoundSound.play();
+    nextRound();
+})    
 $(".new-game").on("click", () => {
+    newGameSound.play();
     nextRound();
     userScore = 0;
     compScore = 0;
